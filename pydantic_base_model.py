@@ -24,7 +24,7 @@ completion = client.beta.chat.completions.parse(
     response_format=User,
 )
 
-user = completion.choices[0].message.parsed
+user: User | None = completion.choices[0].message.parsed
 
 print(repr(user))
 
