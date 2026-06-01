@@ -21,7 +21,7 @@ Example — generating the "role" field in User:
         "user":     3.4   → set to -inf (not in Literal)
         "owner":    2.1   → set to -inf (not in Literal)
 
-    After masking + softmax:
+    After softmax:
         "admin":   52%
         "premium": 35%
         "free":    13%
@@ -57,7 +57,7 @@ print(repr(user))
 # User(name='John Doe', age=25, role='admin', email='johndoe@gmail.com')
 
 """
-WITHOUT Outlines (prompt hacking a 135M model):
+WITHOUT Outlines (prompt hacking a tiny model):
 
     {"name": John Smith, "age": 28, "role": "free",}
 
