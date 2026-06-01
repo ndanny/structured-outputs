@@ -59,7 +59,12 @@ print(repr(user))
 """
 WITHOUT Outlines (prompt hacking a tiny model):
 
-    {"name": John Smith, "age": 28, "role": "free",}
+    {"name": John Smith, "age": 28, "role": "free",>
 
-    json.loads() → JSONDecodeError
+    json.loads() -> JSONDecodeError
+
+WITH Outlines:
+    1. Near-zero latency overhead
+    2. Guaranteed valid Pydantic model, first try
+    3. Works on any open-weight model (tiny ones OK)
 """
