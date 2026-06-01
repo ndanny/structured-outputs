@@ -1,17 +1,16 @@
-from dotenv import load_dotenv
-
-load_dotenv()
-
 import anthropic
 import instructor
+from dotenv import load_dotenv
 from pydantic import BaseModel
-from typing import Optional
+from typing import Literal, Optional
+
+load_dotenv()
 
 
 class User(BaseModel):
     name: str
     age: int
-    location: str
+    role: Literal["admin", "premium", "free"]
     email: Optional[str] = None
 
 
@@ -32,4 +31,4 @@ user: User = client.messages.create(
 
 print(repr(user))
 
-# User(name='Marcus Chen', age=34, location='Portland, Oregon', email='marcus.chen@email.com')
+# User(name='Marcus Chen', age=28, role='premium', email='alex.martinez@email.com')
