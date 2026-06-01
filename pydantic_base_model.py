@@ -17,7 +17,7 @@ class User(BaseModel):
 
 client = instructor.from_anthropic(anthropic.Anthropic())
 
-user = client.messages.create(
+user: User = client.messages.create(
     model="claude-haiku-4-5-20251001",
     max_tokens=1024,
     temperature=1.0,
@@ -32,6 +32,4 @@ user = client.messages.create(
 
 print(repr(user))
 
-"""
-User(name='Marcus Chen', age=34, location='Portland, Oregon', email='marcus.chen@email.com')
-"""
+# User(name='Marcus Chen', age=34, location='Portland, Oregon', email='marcus.chen@email.com')
