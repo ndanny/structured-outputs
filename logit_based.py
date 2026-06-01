@@ -59,7 +59,7 @@ print(repr(user))
 """
 WITHOUT Outlines (prompt hacking a 135M model):
 
-    {"name": John Smith, "age": 28, "role": "free",>
+    {"name": John Smith, "age": 28, "role": "free",}
 
     json.loads() → JSONDecodeError
 """
