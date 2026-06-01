@@ -1,6 +1,5 @@
-import anthropic
-import instructor
 from dotenv import load_dotenv
+from openai import OpenAI
 from pydantic import BaseModel
 from typing import Literal, Optional
 
@@ -14,35 +13,32 @@ class User(BaseModel):
     email: Optional[str] = None
 
 
-client = instructor.from_anthropic(anthropic.Anthropic())
+client = OpenAI()
 
-user: User = client.messages.create(
-    model="claude-haiku-4-5-20251001",
-    max_tokens=1024,
-    temperature=1.0,
+completion = client.beta.chat.completions.parse(
+    model="gpt-5-mini",
     messages=[
-        {
-            "role": "user",
-            "content": "Create a random user profile.",
-        }
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Create a random user profile."},
     ],
-    response_model=User,
+    response_format=User,
 )
+
+user = completion.choices[0].message.parsed
 
 print(repr(user))
 
-
 """
-User(name='Alex Thompson', age=28, role='premium', email='alex.thompson@email.com')
+User(name='Jordan Rivera', age=24, role='free', email='jordan.rivera@email.com')
 """
 
 print(user.model_dump_json(indent=2))
 
 """
 {
-  "name": "Alex Thompson",
-  "age": 28,
-  "role": "premium",
-  "email": "alex.thompson@email.com"
+  "name": "Jordan Rivera",
+  "age": 24,
+  "role": "free",
+  "email": "jordan.rivera@email.com"
 }
 """
