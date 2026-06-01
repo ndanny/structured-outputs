@@ -30,17 +30,6 @@ print(repr(user))
 
 # User(name='Emma Johnson', age=27, role='premium', email=None)
 
-print(user.model_dump_json(indent=2))
-
-"""
-{
-  "name": "Liam Johnson",
-  "age": 25,
-  "role": "premium",
-  "email": null
-}
-"""
-
 """
 ON RETRIES:
 
