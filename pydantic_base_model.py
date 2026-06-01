@@ -31,4 +31,18 @@ user: User = client.messages.create(
 
 print(repr(user))
 
-# User(name='Marcus Chen', age=28, role='premium', email='alex.martinez@email.com')
+
+"""
+User(name='Alex Thompson', age=28, role='premium', email='alex.thompson@email.com')
+"""
+
+print(user.model_dump_json(indent=2))
+
+"""
+{
+  "name": "Alex Thompson",
+  "age": 28,
+  "role": "premium",
+  "email": "alex.thompson@email.com"
+}
+"""
